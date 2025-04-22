@@ -6,20 +6,33 @@
   <title>Selamat Ulang Tahun, Triayu!</title>
   <style>
     body {
-      background-color: #ffe4e1;
+      margin: 0;
       font-family: 'Segoe UI', sans-serif;
+      background-color: #ffe4e1;
       color: #333;
       text-align: center;
-      padding: 40px;
     }
+
+    .welcome-screen {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #ffc0cb;
+      padding: 20px;
+    }
+
+    .main-content {
+      display: none;
+      padding: 30px;
+    }
+
     h1 {
       color: #d63384;
-      font-size: 3em;
+      font-size: 2.5em;
     }
-    p {
-      font-size: 1.2em;
-      margin: 20px 0;
-    }
+
     img {
       border-radius: 20px;
       margin: 20px 0;
@@ -27,34 +40,66 @@
       height: auto;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
+
+    p {
+      font-size: 1.2em;
+      margin: 20px 0;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.1em;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff1493;
+    }
+
     audio {
       display: none;
     }
   </style>
 </head>
 <body>
-  <h1>Selamat Ulang Tahun, Triayu!</h1>
+  <!-- Layar pembuka -->
+  <div class="welcome-screen" id="welcome">
+    <h1>Hai Triayu ❤️</h1>
+    <p>Aku punya sesuatu spesial buatmu...</p>
+    <button onclick="startCard()">Mulai Ucapan 🎉</button>
+  </div>
 
-  <img src="https://raw.githubusercontent.com/Gumpink/Diskon-Belanja/main/WhatsApp%20Image%202025-04-21%20at%2011.10.51.jpeg" alt="Foto Triayu" />
+  <!-- Konten utama -->
+  <div class="main-content" id="content">
+    <h1>Selamat Ulang Tahun, Triayu!</h1>
 
-  <p>Semoga setiap langkahmu dipenuhi kebahagiaan, kesehatan, dan keberkahan. Terima kasih sudah hadir dalam hidupku. ❤️</p>
-  <p>Aku sayang kamu, dan aku akan selalu di sini untukmu.</p>
-  <p>Dengan cinta, <br> Gumpink</p>
+    <img src="https://raw.githubusercontent.com/Gumpink/Diskon-Belanja/main/WhatsApp%20Image%202025-04-21%20at%2011.10.51.jpeg" alt="Triayu" />
 
-  <audio autoplay loop>
-    <source src="https://raw.githubusercontent.com/Gumpink/Diskon-Belanja/main/Janji%20Setia%20-%20Tiara%20Andini%20(Cover)%20by%20Igan%20Andhika-yt.savetube.me.mp3" type="audio/mpeg">
-    Browser kamu tidak mendukung pemutar musik.
-  </audio>
+    <p>Semoga setiap langkahmu dipenuhi kebahagiaan, kesehatan, dan keberkahan. Terima kasih sudah hadir dalam hidupku. ❤️</p>
+    <p>Aku sayang kamu, dan aku akan selalu di sini untukmu.</p>
+    <p>Dengan cinta, <br> Gumpink</p>
+
+    <audio id="bgm" loop>
+      <source src="https://raw.githubusercontent.com/Gumpink/Diskon-Belanja/main/Janji%20Setia%20-%20Tiara%20Andini%20(Cover)%20by%20Igan%20Andhika-yt.savetube.me.mp3" type="audio/mpeg">
+      Browser kamu tidak mendukung pemutar musik.
+    </audio>
+  </div>
 
   <script>
-    // Untuk mengatasi autoplay di beberapa browser (seperti Chrome)
-    document.addEventListener('click', () => {
-      const audio = document.querySelector("audio");
-      if (audio.paused) {
-        audio.play().catch(() => {});
-      }
-    });
+    function startCard() {
+      document.getElementById("welcome").style.display = "none";
+      document.getElementById("content").style.display = "block";
+      const music = document.getElementById("bgm");
+      music.play().catch(() => {});
+    }
   </script>
 </body>
 </html>
+
 
